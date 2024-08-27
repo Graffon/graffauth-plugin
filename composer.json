@@ -3,6 +3,7 @@
     "description": "Manage API keys & APIs",
     "type": "october-plugin",
     "require": {
-        "ramsey/uuid": "^4.0"
+        "ramsey/uuid": "^4.0",
+        "composer/installers": "~1.0"
     }
 }
