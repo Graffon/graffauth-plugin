@@ -12,7 +12,7 @@
 
 # Installation
 
-Run the below command on your project terminal if you are using docker on the local project use the same on your project terminal
+Run the below command on your project terminal, If you're using Docker locally, run the following command in your project's terminal:
 
 ```
 php artisan plugin:install Graffon.GraffAuth --from=git@github.com:Graffon/graffauth-plugin.git
