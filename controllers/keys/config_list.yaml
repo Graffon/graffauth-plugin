@@ -1,0 +1,12 @@
+list: $/graffon/graffauth/models/key/columns.yaml
+modelClass: Graffon\Graffauth\Models\Key
+title: Keys
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'graffon/graffauth/keys/update/:id'

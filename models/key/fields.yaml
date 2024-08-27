@@ -1,0 +1,37 @@
+fields:
+    is_active:
+        label: 'Active API key'
+        span: full
+        default: 0
+        type: switch
+    name:
+        label: 'App Name'
+        span: full
+        type: text
+    ip_address:
+        label: 'Allowed IP Addresses'
+        mode: string
+        separator: comma
+        options:
+            - 0.0.0.0
+        customTags: true
+        useKey: false
+        span: full
+        type: taglist
+    is_ip_active:
+        label: 'Active IP Protection'
+        span: full
+        type: switch
+tabs:
+    fields:
+        app_key:
+            label: 'App Token'
+            span: full
+            type: text
+            tab: Credentials
+        api_key:
+            label: 'API key'
+            span: full
+            readOnly: 1
+            type: sensitive
+            tab: Credentials

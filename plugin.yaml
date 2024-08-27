@@ -1,0 +1,17 @@
+plugin:
+    name: 'graffon.graffauth::lang.plugin.name'
+    description: 'This plugin will protect the APIs Using API keys and give capabilities to connect to any application'
+    author: Graffon
+    icon: oc-icon-code-fork
+    homepage: ''
+
+settings:
+  graffauth:
+    label: Graff Auth
+    description: Manage API keys & APIs
+    category: Graff Auth
+    icon: icon-key
+    url: graffon/graffauth/keys
+    order: 500
+    keywords: graff auth
+    # permissions: [graffon.graffauth.manage_apis]

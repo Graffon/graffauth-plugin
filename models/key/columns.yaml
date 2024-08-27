@@ -1,0 +1,24 @@
+columns:
+    name:
+        label: 'App Name'
+        type: text
+        searchable: true
+    app_key:
+        label: 'App Token'
+        type: text
+        searchable: true
+    ip_address:
+        label: 'Allowed IPs'
+        type: text
+    is_active:
+        label: Active
+        type: switch
+    is_ip_active:
+        label: 'IP Protection'
+        type: switch
+    created_at:
+        label: 'Created At'
+        type: datetime
+    updated_at:
+        label: 'Updated At'
+        type: datetime

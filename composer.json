@@ -1,0 +1,8 @@
+{
+    "name": "graffon/graffauth",
+    "description": "Manage API keys & APIs",
+    "type": "october-plugin",
+    "require": {
+        "ramsey/uuid": "^4.0"
+    }
+}

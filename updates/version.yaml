@@ -1,0 +1,20 @@
+v1.0.1:
+    - 'Initialize plugin'
+v1.0.2:
+    - 'Created table graffon_graffauth_api_keys'
+    - builder_table_create_graffon_graffauth_api_keys.php
+v1.0.3:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys.php
+v1.0.4:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_2.php
+v1.0.5:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_3.php
+v1.0.6:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_4.php
+v1.0.7:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_5.php

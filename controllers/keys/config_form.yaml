@@ -1,0 +1,11 @@
+name: Keys
+modelClass: Graffon\Graffauth\Models\Key
+form: $/graffon/graffauth/models/key/fields.yaml
+defaultRedirect: graffon/graffauth/keys
+create:
+    redirect: 'graffon/graffauth/keys/update/:id'
+    redirectClose: graffon/graffauth/keys
+update:
+    redirect: graffon/graffauth/keys
+    redirectClose: graffon/graffauth/keys
+preview: {  }
