@@ -28,21 +28,4 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
     }
-
-    /**
-     * registerSettings used by the backend.
-     */
-    // public function registerSettings()
-    // {
-    //     return [
-    //         'settings' => [
-    //             'label' => 'Graff Auth Settings',
-    //             'description' => 'Manage API keys & APIs',
-    //             'category' => 'Graff Auth',
-    //             'icon' => 'icon-key',
-    //             'class' => 'Graffon\GraffAuth\Controllers\Keys',
-    //             'url' => Backend::url('graffon/graffauth/keys'),
-    //         ]
-    //     ];
-    // }
 }
