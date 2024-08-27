@@ -1,9 +1,23 @@
+tabs:
+    fields:
+        app_key:
+            label: 'App Token'
+            span: full
+            type: text
+            tab: Credentials
+        api_key:
+            label: 'API key'
+            span: full
+            readOnly: 1
+            type: sensitive
+            tab: Credentials
 fields:
     is_active:
         label: 'Active API key'
         span: full
         default: 0
         type: switch
+        comment: 'By activating the API key it will accept requests'
     name:
         label: 'App Name'
         span: full
@@ -18,20 +32,9 @@ fields:
         useKey: false
         span: full
         type: taglist
+        commentAbove: 'To enable IP-based access restrictions, please list the authorized IP addresses. you can use "0.0.0.0" IP for open access'
     is_ip_active:
         label: 'Active IP Protection'
         span: full
         type: switch
-tabs:
-    fields:
-        app_key:
-            label: 'App Token'
-            span: full
-            type: text
-            tab: Credentials
-        api_key:
-            label: 'API key'
-            span: full
-            readOnly: 1
-            type: sensitive
-            tab: Credentials
+        comment: 'By activating IP-based access restrictions will be enabled'

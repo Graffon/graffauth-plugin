@@ -1,6 +1,7 @@
 <?php namespace Graffon\Graffauth\Models;
 
 use Model;
+use Flash;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -33,5 +34,9 @@ class Key extends Model
     {
         $this->api_key = bin2hex(random_bytes(32));
         $this->app_key = Uuid::uuid4()->toString();;
+    }
+
+    public function afterCreate() {
+        Flash::success('API Key created successfully');
     }
 }
