@@ -18,4 +18,22 @@ Run the below command on your project terminal, If you're using Docker locally, 
 php artisan plugin:install Graffon.GraffAuth --from=git@github.com:Graffon/graffauth-plugin.git
 ```
 
-You can access the plugin on the ``Settings`` section under ``Graff Auth ``
+You can access the plugin in the ``Settings`` section under ``Graff Auth ``
+
+## Use
+
+To use the middleware you need to add the graffauth as a middleware to your API routes here is an example code
+
+```
+use Illuminate\Http\Request;
+use Graffon\Graffauth\Middleware\VerifyAPIKey;
+
+Route::prefix('Your/Prefix')->middleware(VerifyAPIKey::class)->group(function () {
+    Route::get('/test', function () {
+        return response()->json(["message" => "Authenticated", 200);
+    });
+});
+```
+## How to set an API call
+
+On your request header add ```graff-auth-key``` and pass the API key that you got from the plugin
