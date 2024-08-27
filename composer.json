@@ -1,5 +1,5 @@
 {
-    "name": "graffon/graffauth",
+    "name": "graffon/graffauth-plugin",
     "description": "Manage API keys & APIs",
     "type": "october-plugin",
     "require": {
