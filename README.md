@@ -30,7 +30,7 @@ use Graffon\Graffauth\Middleware\VerifyAPIKey;
 
 Route::prefix('Your/Prefix')->middleware(VerifyAPIKey::class)->group(function () {
     Route::get('/test', function () {
-        return response()->json(["message" => "Authenticated", 200);
+        return response()->json(["message" => "Authenticated", 200)];
     });
 });
 ```
