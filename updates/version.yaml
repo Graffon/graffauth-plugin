@@ -18,3 +18,6 @@ v1.0.6:
 v1.0.7:
     - 'Updated table graffon_graffauth_api_keys'
     - builder_table_update_graffon_graffauth_api_keys_5.php
+v1.0.8:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_6.php

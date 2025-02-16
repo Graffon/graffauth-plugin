@@ -1,14 +1,25 @@
 <?php namespace Graffon\Graffauth\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 use Graffon\Graffauth\Models\Key;
 
 class VerifyAPIKey
 {
     public function handle($request, Closure $next)
     {
-        $apiKey = $request->header('graff-auth-key');
+        // Get the Authorization header
+        $authHeader = $request->header('Authorization');
 
+        // Check if the Authorization header exists and starts with "Bearer "
+        if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        // Extract the token from the Authorization header
+        $apiKey = substr($authHeader, 7); // Remove "Bearer " from the beginning
+
+        // Find the key in the database
         $key = Key::where('api_key', $apiKey)->where('is_active', true)->first();
 
         if (!$key) {
@@ -18,7 +29,7 @@ class VerifyAPIKey
         // Check if IP protection is enabled
         if ($key->is_ip_active) {
             // Get the list of allowed IPs from the key record
-            $allowedIps = explode(',', $key->ip_address); // Assuming 'allowed_ips' column in the database
+            $allowedIps = explode(',', $key->ip_address);
 
             // Check for the presence of 0.0.0.0 in the allowed IPs list
             if (!in_array('0.0.0.0', $allowedIps)) {
@@ -29,6 +40,29 @@ class VerifyAPIKey
                 if (!in_array($clientIp, $allowedIps)) {
                     return response()->json(['error' => 'Unauthorized'], 403);
                 }
+            }
+        }
+
+        // Check if Origin protection is enabled
+        if ($key->is_origins_active) {
+            // Get the list of allowed origins from the key record
+            $allowedDomains = explode(',', $key->origins);
+
+            // Get the Origin and Referer headers
+            $origin = $request->header('Origin') ?? '';
+            $referer = $request->header('Referer') ?? '';
+
+            // If both headers are empty, deny access
+            if (empty($origin) && empty($referer)) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+
+            // Check if Origin or Referer is in the allowed domains
+            $isValidOrigin = !empty($origin) && in_array($origin, $allowedDomains);
+            $isValidReferer = !empty($referer) && in_array(parse_url($referer, PHP_URL_HOST), $allowedDomains);
+
+            if (!$isValidOrigin && !$isValidReferer) {
+                return response()->json(['error' => 'Unauthorized'], 403);
             }
         }
 

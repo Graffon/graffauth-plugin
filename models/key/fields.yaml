@@ -22,6 +22,20 @@ fields:
         label: 'App Name'
         span: full
         type: text
+    origins:
+        label: 'Allowed Origins'
+        mode: string
+        separator: comma
+        customTags: true
+        useKey: false
+        span: full
+        type: taglist
+        commentAbove: 'To enable Origin-based access restrictions, please list the authorized Origins.'
+    is_origins_active:
+        label: 'Active Origin Protection'
+        span: full
+        type: switch
+        comment: 'By activating Origin-based access restrictions will be enabled'
     ip_address:
         label: 'Allowed IP Addresses'
         mode: string
