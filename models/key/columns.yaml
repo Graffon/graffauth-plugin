@@ -16,6 +16,9 @@ columns:
     is_ip_active:
         label: 'IP Protection'
         type: switch
+    is_origins_active:
+        label: 'Origin Protection'
+        type: switch
     created_at:
         label: 'Created At'
         type: datetime
