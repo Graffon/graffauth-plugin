@@ -52,3 +52,17 @@ fields:
         span: full
         type: switch
         comment: 'By activating IP-based access restrictions will be enabled'
+    apps:
+        label: 'App Names'
+        mode: string
+        separator: comma
+        customTags: true
+        useKey: false
+        span: full
+        type: taglist
+        commentAbove: 'To enable App-based-protection access restrictions, please list the authorized App Names.'
+    is_app_protect_active:
+        label: 'App Protection Enable'
+        span: auto
+        type: switch
+        comment: 'By activating App-based access restrictions will be enabled'

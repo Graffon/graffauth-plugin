@@ -57,11 +57,32 @@ class VerifyAPIKey
                 return response()->json(['error' => 'Unauthorized'], 403);
             }
 
-            // Check if Origin or Referer is in the allowed domains
+            // Check if Origin or Referer is in the allowed origins
             $isValidOrigin = !empty($origin) && in_array($origin, $allowedDomains);
             $isValidReferer = !empty($referer) && in_array(parse_url($referer, PHP_URL_HOST), $allowedDomains);
 
             if (!$isValidOrigin && !$isValidReferer) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+        }
+
+        // Check if Origin protection is enabled
+        if ($key->is_app_protect_active) {
+            // Get the list of allowed apps from the key record
+            $allowedApps = explode(',', $key->apps);
+
+            // Get the Origin and Referer headers
+            $app = $request->header('App-Package') ?? '';
+
+            // If both headers are empty, deny access
+            if (empty($app) && empty($referer)) {
+                return response()->json(['error' => 'Unauthorized'], 403);
+            }
+            
+            // Check if app or Referer is in the allowed apps
+            $isValidApp = !empty($app) && in_array($app, $allowedApps);
+
+            if (!$isValidApp) {
                 return response()->json(['error' => 'Unauthorized'], 403);
             }
         }
