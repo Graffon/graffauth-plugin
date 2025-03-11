@@ -19,7 +19,7 @@ fields:
         type: switch
         comment: 'By activating the API key it will accept requests'
     name:
-        label: 'App Name'
+        label: Name
         span: full
         type: text
     origins:

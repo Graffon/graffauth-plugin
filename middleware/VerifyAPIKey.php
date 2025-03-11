@@ -10,6 +10,7 @@ class VerifyAPIKey
     {
         // Get the Authorization header
         $authHeader = $request->header('Authorization');
+        $authControl = $request->header('X-GRAFF-AUTH-CONTROL');
 
         // Check if the Authorization header exists and starts with "Bearer "
         if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
@@ -17,10 +18,26 @@ class VerifyAPIKey
         }
 
         // Extract the token from the Authorization header
-        $apiKey = substr($authHeader, 7); // Remove "Bearer " from the beginning
+        $token = substr($authHeader, 7); // Remove "Bearer " from the beginning
 
-        // Find the key in the database
-        $key = Key::where('api_key', $apiKey)->where('is_active', true)->first();
+        // Check if grant_type is required and valid
+        if ($authControl !== 'Advance') {
+            // Find the key in the database
+            $key = Key::where('api_key', $token)->where('is_active', true)->first();
+        } else {
+            // Decode the Base64 string
+            $decodedToken = base64_decode($token, true);
+            if (!$decodedToken || !str_contains($decodedToken, ':')) {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+            // Extract API key and secret
+            [$apiToken, $apiKey] = explode(':', $decodedToken, 2);
+
+            Log::info($apiToken);
+            Log::info($apiKey);
+            
+            $key = Key::where('api_key', $apiKey)->where('app_key', $apiToken)->where('is_active', true)->first();
+        }
 
         if (!$key) {
             return response()->json(['error' => 'Unauthorized'], 401);
@@ -78,7 +95,7 @@ class VerifyAPIKey
             if (empty($app) && empty($referer)) {
                 return response()->json(['error' => 'Unauthorized'], 403);
             }
-            
+
             // Check if app or Referer is in the allowed apps
             $isValidApp = !empty($app) && in_array($app, $allowedApps);
 

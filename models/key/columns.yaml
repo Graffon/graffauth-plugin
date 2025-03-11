@@ -1,15 +1,12 @@
 columns:
     name:
-        label: 'App Name'
+        label: Name
         type: text
         searchable: true
     app_key:
         label: 'App Token'
         type: text
         searchable: true
-    ip_address:
-        label: 'Allowed IPs'
-        type: text
     is_active:
         label: Active
         type: switch
@@ -18,6 +15,9 @@ columns:
         type: switch
     is_origins_active:
         label: 'Origin Protection'
+        type: switch
+    is_app_protect_active:
+        label: 'App Protection'
         type: switch
     created_at:
         label: 'Created At'

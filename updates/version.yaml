@@ -24,3 +24,9 @@ v1.0.8:
 v1.0.9:
     - 'Updated table graffon_graffauth_api_keys'
     - builder_table_update_graffon_graffauth_api_keys_7.php
+v1.0.10:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_8.php
+v1.0.11:
+    - 'Updated table graffon_graffauth_api_keys'
+    - builder_table_update_graffon_graffauth_api_keys_9.php
